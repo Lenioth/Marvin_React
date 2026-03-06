@@ -37,15 +37,15 @@ export default function App() {
         />
 
         <Stack.Screen
-          name="Servicos"
+          name="Projeto"
           component={ServicosScreen}
-          options={{ title: "Serviços" }}
+          options={{ title: "Projeto" }}
         />
 
         <Stack.Screen
-          name="Portfolio"
+          name="Saga"
           component={PortfolioScreen}
-          options={{ title: "Portfólio" }}
+          options={{ title: "Saga" }}
         />
         <Stack.Screen
           name="Audiobook"

@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   background: {
     position: "absolute",
     width: "100%",
-    height: "85%",
+    height: "70%",
     top: 0,
     resizeMode: "cover",
   },
@@ -71,14 +71,14 @@ const styles = StyleSheet.create({
     width: 360,
     height: 360,
     resizeMode: "contain",
-    marginBottom: 100,
+    marginBottom: 200,
   },
 
   footer: {
     position: "absolute",
     bottom: 15,
-    width: "95%",
-    height: 140,
+    width: "100%",
+    height: 240,
     resizeMode: "contain",
   },
 });

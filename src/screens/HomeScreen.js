@@ -24,14 +24,14 @@ const ITEMS = [
     id: "2",
     title: "Projeto Social",
     type: "screen",
-    screen: "Servicos",
+    screen: "Projeto",
     emoji: "🤝",
   },
   {
     id: "3",
     title: "Saga",
     type: "screen",
-    screen: "Portfolio",
+    screen: "Saga",
     emoji: "📚",
   },
   {
