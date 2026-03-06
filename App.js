@@ -6,6 +6,8 @@ import SplashScreen from "./src/screens/SplashScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import ServicosScreen from "./src/screens/ServicosScreen";
 import PortfolioScreen from "./src/screens/PortfolioScreen";
+import AudiobookScreen from "./src/screens/AudiobookScreen";
+import AudiobookChaptersScreen from "./src/screens/AudiobookChaptersScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +46,16 @@ export default function App() {
           name="Portfolio"
           component={PortfolioScreen}
           options={{ title: "Portfólio" }}
+        />
+        <Stack.Screen
+          name="Audiobook"
+          component={AudiobookScreen}
+          options={{ title: "Audiolivro" }}
+        />
+        <Stack.Screen
+          name="AudiobookChapters"
+          component={AudiobookChaptersScreen}
+          options={{ title: "Capítulos" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

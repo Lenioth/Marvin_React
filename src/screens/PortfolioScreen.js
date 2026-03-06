@@ -2,7 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 
 import projeto1 from "../../assets/img/mg_chave.png";
-import projeto2 from "../../assets/img/mg_gaiola.png";
+import projeto2 from "../../assets/img/mg_sereira.png";
+import projeto3 from "../../assets/img/mg_gaiola.png";
+import projeto4 from "../../assets/img/mg_sangue.png";
 
 export default function PortfolioScreen() {
   return (
@@ -15,19 +17,38 @@ export default function PortfolioScreen() {
       {/* CARD 1 */}
       <View style={styles.card}>
         <Image source={projeto1} style={styles.image} />
-        <Text style={styles.cardTitle}>Marvin Grinn e o Sangue do Dragão.</Text>
+        <Text style={styles.cardTitle}>Marvin Grinn e a Chave Mestra.</Text>
+        <Text style={styles.cardDescription}>
+          Atividades de incentivo à leitura e criatividade através da saga
+          Marvin Grinn.
+        </Text>
+      </View>
+      {/* CARD 2 */}
+      <View style={styles.card}>
+        <Image source={projeto2} style={styles.image} />
+        <Text style={styles.cardTitle}>
+          Marvin Grinn e o Segredo da Sereia.
+        </Text>
         <Text style={styles.cardDescription}>
           Atividades de incentivo à leitura e criatividade através da saga
           Marvin Grinn.
         </Text>
       </View>
 
-      {/* CARD 2 */}
+      {/* CARD 3 */}
       <View style={styles.card}>
-        <Image source={projeto2} style={styles.image} />
-        <Text style={styles.cardTitle}>
-          Marvin Grinn e o Labirinto da Mente.
+        <Image source={projeto3} style={styles.image} />
+        <Text style={styles.cardTitle}>Marvin Grinn e a Gaiola Dourada.</Text>
+        <Text style={styles.cardDescription}>
+          Atividades de incentivo à leitura e criatividade através da saga
+          Marvin Grinn.
         </Text>
+      </View>
+
+      {/* CARD 4 */}
+      <View style={styles.card}>
+        <Image source={projeto4} style={styles.image} />
+        <Text style={styles.cardTitle}>Marvin Grinn e o Sangue do Dragão.</Text>
         <Text style={styles.cardDescription}>
           Participação em eventos culturais e oficinas educativas voltadas à
           literatura e criatividade.

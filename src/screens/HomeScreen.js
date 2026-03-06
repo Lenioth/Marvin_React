@@ -29,10 +29,10 @@ const ITEMS = [
   },
   {
     id: "3",
-    title: "Portfolio",
+    title: "Saga",
     type: "screen",
     screen: "Portfolio",
-    emoji: "🖼️",
+    emoji: "📚",
   },
   {
     id: "4",
@@ -45,7 +45,7 @@ const ITEMS = [
     id: "5",
     title: "Livros",
     type: "external",
-    url: "https://www.marvingrinnsocial.com.br/",
+    url: "https://www.marvingrinnsocial.com.br/a-serie/",
     emoji: "📚",
   },
   {
@@ -57,9 +57,9 @@ const ITEMS = [
   },
   {
     id: "7",
-    title: "Audiobooks",
-    type: "external",
-    url: "https://www.marvingrinnsocial.com.br/acessibilidade",
+    title: "Audiolivro",
+    type: "screen",
+    screen: "Audiobook",
     emoji: "🎧",
   },
 ];
