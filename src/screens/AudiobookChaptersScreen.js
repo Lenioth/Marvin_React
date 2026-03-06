@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
-import { Audio } from "expo-av";
+import { AudioPlayer } from "expo-audio";
 
 const BASE_URL = "https://SEU-LINK-CDN/";
 
@@ -41,10 +41,10 @@ export default function AudiobookChaptersScreen({ route }) {
     try {
       await unload();
 
-      const { sound } = await Audio.Sound.createAsync(
-        { uri: track.uri },
-        { shouldPlay: true },
-      );
+      const player = new AudioPlayer();
+
+      await player.loadAsync(track.uri);
+      player.play();
 
       soundRef.current = sound;
       setCurrent(track);
