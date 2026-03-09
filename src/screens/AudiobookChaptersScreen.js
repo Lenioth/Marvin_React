@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
 import { useAudioPlayer, useAudioPlayerStatus } from "expo-audio";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import AudioVisualizer from "./AudioVisualizer";
 
 const BASE_URL = "https://SEU-LINK-CDN/";
@@ -51,20 +52,67 @@ export default function AudiobookChaptersScreen({ route }) {
   const tracks = useMemo(() => TRACKS_BY_BOOK[bookId] || [], [bookId]);
 
   const [current, setCurrent] = useState(null);
+  const [savedProgress, setSavedProgress] = useState({});
 
-  // Hook recomendado pela Expo para criar e gerenciar o player
-  const player = useAudioPlayer(current ? current.source : null);
+  // cria o player uma vez com uma fonte inicial válida
+  const player = useAudioPlayer(
+    tracks[0]?.source ??
+      require("../../assets/teste/0 - Prólogo A entrevista.mp3"),
+  );
+
   const status = useAudioPlayerStatus(player);
   const isPlaying = status?.playing ?? false;
 
-  function playTrack(track) {
+  const getStorageKey = (track) => `audio-progress-${bookId}-${track.id}`;
+
+  function formatTime(seconds) {
+    if (!seconds || seconds <= 0) return "00:00";
+
+    const totalSeconds = Math.floor(seconds);
+    const minutes = Math.floor(totalSeconds / 60);
+    const remainingSeconds = totalSeconds % 60;
+
+    return `${String(minutes).padStart(2, "0")}:${String(
+      remainingSeconds,
+    ).padStart(2, "0")}`;
+  }
+
+  async function saveProgress(track, position) {
     try {
-      if (current?.id !== track.id) {
-        // troca a fonte atual pelo novo capítulo
-        player.replace(track.source);
-        setCurrent(track);
-      }
-      player.play();
+      if (!track) return;
+      await AsyncStorage.setItem(getStorageKey(track), String(position));
+    } catch (error) {
+      console.log("Erro ao salvar progresso:", error);
+    }
+  }
+
+  async function loadProgress(track) {
+    try {
+      const saved = await AsyncStorage.getItem(getStorageKey(track));
+      return saved ? Number(saved) : 0;
+    } catch (error) {
+      console.log("Erro ao carregar progresso:", error);
+      return 0;
+    }
+  }
+
+  async function playTrack(track) {
+    try {
+      const savedPosition = await loadProgress(track);
+
+      player.replace(track.source);
+      setCurrent(track);
+
+      setTimeout(async () => {
+        try {
+          if (savedPosition > 0) {
+            await player.seekTo(savedPosition);
+          }
+          player.play();
+        } catch (error) {
+          console.log("Erro ao tocar:", error);
+        }
+      }, 250);
     } catch (error) {
       console.log("Erro ao tocar:", error);
     }
@@ -80,11 +128,50 @@ export default function AudiobookChaptersScreen({ route }) {
     player.play();
   }
 
-  function stop() {
+  async function stop() {
     if (!current) return;
+    await saveProgress(current, 0);
+    setSavedProgress((prev) => ({
+      ...prev,
+      [current.id]: 0,
+    }));
     player.pause();
-    player.seekTo(0);
+    await player.seekTo(0);
   }
+
+  useEffect(() => {
+    async function loadAllProgress() {
+      try {
+        const progressMap = {};
+
+        for (const track of tracks) {
+          const saved = await AsyncStorage.getItem(getStorageKey(track));
+          progressMap[track.id] = saved ? Number(saved) : 0;
+        }
+
+        setSavedProgress(progressMap);
+      } catch (error) {
+        console.log("Erro ao carregar progressos:", error);
+      }
+    }
+
+    loadAllProgress();
+  }, [tracks]);
+
+  useEffect(() => {
+    if (!current || !status) return;
+
+    const position = status.currentTime ?? 0;
+
+    if (position > 0) {
+      saveProgress(current, position);
+
+      setSavedProgress((prev) => ({
+        ...prev,
+        [current.id]: position,
+      }));
+    }
+  }, [status, current]);
 
   const renderItem = ({ item }) => {
     const selected = current?.id === item.id;
@@ -106,7 +193,9 @@ export default function AudiobookChaptersScreen({ route }) {
               ? isPlaying
                 ? "Tocando..."
                 : "Selecionado"
-              : "Toque para ouvir"}
+              : savedProgress[item.id] > 0
+                ? `Continuar de ${formatTime(savedProgress[item.id])}`
+                : "Toque para ouvir"}
           </Text>
 
           {selected && <AudioVisualizer isPlaying={isPlaying} />}
@@ -154,9 +243,23 @@ export default function AudiobookChaptersScreen({ route }) {
 }
 
 const styles = StyleSheet.create({
-  page: { flex: 1, backgroundColor: "#0b0f14", padding: 20 },
-  title: { color: "#fff", fontSize: 22, fontWeight: "700", marginBottom: 4 },
-  subtitle: { color: "#9ca3af", marginBottom: 14 },
+  page: {
+    flex: 1,
+    backgroundColor: "#0b0f14",
+    padding: 20,
+  },
+
+  title: {
+    color: "#fff",
+    fontSize: 22,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+
+  subtitle: {
+    color: "#9ca3af",
+    marginBottom: 14,
+  },
 
   track: {
     backgroundColor: "#111827",
@@ -181,6 +284,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontSize: 13,
   },
+
   trackFooter: {
     marginTop: 6,
     flexDirection: "row",
