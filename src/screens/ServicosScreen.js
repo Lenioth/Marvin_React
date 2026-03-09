@@ -1,7 +1,10 @@
 import React from "react";
-import { ScrollView, Text, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { colors } from "../theme/colors";
+import { spacing } from "../theme/spacing";
+import { typography } from "../theme/typography";
 
-export default function PortfolioScreen() {
+export default function ServicosScreen() {
   return (
     <ScrollView
       style={styles.page}
@@ -13,7 +16,6 @@ export default function PortfolioScreen() {
       </Text>
 
       <Text style={styles.sectionTitle}>Apresentação</Text>
-
       <Text style={styles.text}>
         O projeto tem por objetivo ampliar o acesso à literatura, com foco nos
         livros da Série Marvin Grinn, desenvolvendo ferramentas que revertam em
@@ -21,41 +23,30 @@ export default function PortfolioScreen() {
       </Text>
 
       <Text style={styles.text}>
-        Visibilidade em ações de promoção à literatura nacional. Inclusão social
+        Visibilidade em ações de promoção à literatura nacional; inclusão social
         por meio da distribuição de exemplares físicos e virtuais, além de
-        acesso gratuito a plataformas interativas para ampliar a experiência da
-        leitura.
-      </Text>
-
-      <Text style={styles.text}>
-        Acessibilidade com a confecção de exemplares em braile, versões com
-        audiodescrição e materiais audiovisuais.
+        acesso gratuito a plataformas interativas; acessibilidade com exemplares
+        em braile, audiodescrição e materiais audiovisuais.
       </Text>
 
       <Text style={styles.sectionTitle}>Objetivos Culturais</Text>
-
-      <Text style={styles.text}>
-        • Website com versão em audiodescrição totalmente gratuita.
+      <Text style={styles.bullet}>
+        • Via website, contendo versão em audiodescrição, totalmente gratuita.
       </Text>
-
-      <Text style={styles.text}>
-        • Impressão de exemplares em braile com entrega gratuita para
+      <Text style={styles.bullet}>
+        • Pela impressão de exemplares em braile, com entrega gratuita para
         instituições voltadas ao ensino de pessoas com deficiência visual.
       </Text>
-
-      <Text style={styles.text}>
-        • Aplicativo gratuito para smartphones com acesso às obras e conteúdos
-        complementares.
+      <Text style={styles.bullet}>
+        • Via aplicativo para smartphones, com acesso gratuito.
       </Text>
-
-      <Text style={styles.text}>
-        • Áreas especiais do aplicativo com descrições e curiosidades históricas
-        sobre cenários presentes nos livros.
+      <Text style={styles.bullet}>
+        • Áreas especiais do aplicativo trarão descrições e curiosidades
+        históricas sobre os cenários do livro.
       </Text>
-
-      <Text style={styles.text}>
-        • Doação de exemplares impressos para bibliotecas públicas e rede de
-        ensino público.
+      <Text style={styles.bullet}>
+        • Destinação de exemplares impressos para doação a bibliotecas públicas
+        e rede de ensino público.
       </Text>
     </ScrollView>
   );
@@ -64,34 +55,40 @@ export default function PortfolioScreen() {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#0b0f14",
+    backgroundColor: colors.background,
+    padding: spacing.lg,
   },
 
   title: {
-    color: "#fff",
-    fontSize: 26,
-    fontWeight: "700",
-    marginBottom: 6,
+    color: colors.text,
+    ...typography.title,
+    marginBottom: spacing.xs,
   },
 
   subtitle: {
-    color: "#9ca3af",
-    marginBottom: 20,
+    color: colors.textMuted,
+    ...typography.body,
+    marginBottom: spacing.lg,
   },
 
   sectionTitle: {
-    color: "#c9a24c",
-    fontSize: 20,
-    fontWeight: "700",
-    marginTop: 10,
-    marginBottom: 10,
+    color: colors.primary,
+    ...typography.subtitle,
+    marginBottom: spacing.sm,
+    marginTop: spacing.md,
   },
 
   text: {
-    color: "#d1d5db",
-    fontSize: 15,
+    color: colors.textMuted,
+    ...typography.body,
     lineHeight: 22,
-    marginBottom: 10,
+    marginBottom: spacing.sm,
+  },
+
+  bullet: {
+    color: colors.textMuted,
+    ...typography.body,
+    lineHeight: 22,
+    marginBottom: spacing.xs,
   },
 });
