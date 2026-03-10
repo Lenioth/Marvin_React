@@ -6,66 +6,65 @@ import projeto2 from "../../assets/img/mg_sereira.png";
 import projeto3 from "../../assets/img/mg_gaiola.png";
 import projeto4 from "../../assets/img/mg_sangue.png";
 
+import ScreenContainer from "../components/ScreenContainer";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
 
 export default function PortfolioScreen() {
   return (
-    <ScrollView
-      style={styles.page}
-      contentContainerStyle={{ paddingBottom: 40 }}
-    >
-      <Text style={styles.title}>Livros</Text>
+    <ScreenContainer>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 40 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <Text style={styles.title}>Livros</Text>
 
-      <View style={styles.card}>
-        <Image source={projeto1} style={styles.image} />
-        <Text style={styles.cardTitle}>Marvin Grinn e a Chave Mestra.</Text>
-        <Text style={styles.cardDescription}>
-          Atividades de incentivo à leitura e criatividade através da saga
-          Marvin Grinn.
-        </Text>
-      </View>
+        <View style={styles.card}>
+          <Image source={projeto1} style={styles.image} />
+          <Text style={styles.cardTitle}>Marvin Grinn e a Chave Mestra.</Text>
+          <Text style={styles.cardDescription}>
+            Atividades de incentivo à leitura e criatividade através da saga
+            Marvin Grinn.
+          </Text>
+        </View>
 
-      <View style={styles.card}>
-        <Image source={projeto2} style={styles.image} />
-        <Text style={styles.cardTitle}>
-          Marvin Grinn e o Segredo da Sereia.
-        </Text>
-        <Text style={styles.cardDescription}>
-          Atividades de incentivo à leitura e criatividade através da saga
-          Marvin Grinn.
-        </Text>
-      </View>
+        <View style={styles.card}>
+          <Image source={projeto2} style={styles.image} />
+          <Text style={styles.cardTitle}>
+            Marvin Grinn e o Segredo da Sereia.
+          </Text>
+          <Text style={styles.cardDescription}>
+            Atividades de incentivo à leitura e criatividade através da saga
+            Marvin Grinn.
+          </Text>
+        </View>
 
-      <View style={styles.card}>
-        <Image source={projeto3} style={styles.image} />
-        <Text style={styles.cardTitle}>Marvin Grinn e a Gaiola Dourada.</Text>
-        <Text style={styles.cardDescription}>
-          Atividades de incentivo à leitura e criatividade através da saga
-          Marvin Grinn.
-        </Text>
-      </View>
+        <View style={styles.card}>
+          <Image source={projeto3} style={styles.image} />
+          <Text style={styles.cardTitle}>Marvin Grinn e a Gaiola Dourada.</Text>
+          <Text style={styles.cardDescription}>
+            Atividades de incentivo à leitura e criatividade através da saga
+            Marvin Grinn.
+          </Text>
+        </View>
 
-      <View style={styles.card}>
-        <Image source={projeto4} style={styles.image} />
-        <Text style={styles.cardTitle}>Marvin Grinn e o Sangue do Dragão.</Text>
-        <Text style={styles.cardDescription}>
-          Participação em eventos culturais e oficinas educativas voltadas à
-          literatura e criatividade.
-        </Text>
-      </View>
-    </ScrollView>
+        <View style={styles.card}>
+          <Image source={projeto4} style={styles.image} />
+          <Text style={styles.cardTitle}>
+            Marvin Grinn e o Sangue do Dragão.
+          </Text>
+          <Text style={styles.cardDescription}>
+            Participação em eventos culturais e oficinas educativas voltadas à
+            literatura e criatividade.
+          </Text>
+        </View>
+      </ScrollView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    padding: spacing.lg,
-    backgroundColor: colors.background,
-  },
-
   title: {
     color: colors.text,
     ...typography.title,

@@ -55,7 +55,7 @@ export default function ServicosScreen() {
 const styles = StyleSheet.create({
   page: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.card,
     padding: spacing.lg,
   },
 

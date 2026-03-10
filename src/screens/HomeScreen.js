@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import * as WebBrowser from "expo-web-browser";
 
 import logo from "../../assets/img/logo_mg_new.png";
 
 import MENU_ITEMS from "../data/menu";
 import MenuCard from "../components/MenuCard";
+import ScreenContainer from "../components/ScreenContainer";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
@@ -26,7 +26,7 @@ export default function HomeScreen({ navigation }) {
   );
 
   return (
-    <SafeAreaView style={styles.safe} edges={["top"]}>
+    <ScreenContainer>
       <FlatList
         data={MENU_ITEMS}
         keyExtractor={(item) => item.id}
@@ -45,20 +45,13 @@ export default function HomeScreen({ navigation }) {
           </View>
         }
       />
-    </SafeAreaView>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-
   container: {
-    padding: spacing.lg,
     paddingBottom: 40,
-    backgroundColor: colors.background,
   },
 
   header: {

@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { View, Text, Pressable, FlatList, StyleSheet } from "react-native";
 import TRACKS_BY_BOOK from "../data/tracks";
 import ChapterCard from "../components/ChapterCard";
+import ScreenContainer from "../components/ScreenContainer";
 import useAudiobookPlayer from "../hooks/useAudiobookPlayer";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
@@ -42,7 +43,7 @@ export default function AudiobookChaptersScreen({ route }) {
   };
 
   return (
-    <View style={styles.page}>
+    <ScreenContainer>
       <Text style={styles.title}>{bookTitle}</Text>
       <Text style={styles.subtitle}>Capítulos disponíveis</Text>
 
@@ -75,17 +76,11 @@ export default function AudiobookChaptersScreen({ route }) {
           </Pressable>
         </View>
       </View>
-    </View>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: colors.background,
-    padding: spacing.lg,
-  },
-
   title: {
     color: colors.text,
     ...typography.title,
