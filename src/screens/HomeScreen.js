@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     color: colors.text,
     ...typography.title,
     textAlign: "center",
+    marginBottom: spacing.sm,
   },
 
   footer: {
