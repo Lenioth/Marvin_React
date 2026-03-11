@@ -7,6 +7,8 @@ import useAudiobookPlayer from "../hooks/useAudiobookPlayer";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
+import PrimaryButton from "../components/PrimaryButton";
+import SectionTitle from "../components/SectionTitle";
 
 export default function AudiobookChaptersScreen({ route }) {
   const { bookId, bookTitle } = route.params;
@@ -52,7 +54,10 @@ export default function AudiobookChaptersScreen({ route }) {
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         ItemSeparatorComponent={() => <View style={{ height: spacing.sm }} />}
-        contentContainerStyle={{ paddingBottom: spacing.lg }}
+        contentContainerStyle={{
+          paddingHorizontal: spacing.md,
+          paddingBottom: spacing.lg,
+        }}
       />
 
       <View style={styles.player}>
@@ -85,12 +90,14 @@ const styles = StyleSheet.create({
     color: colors.text,
     ...typography.title,
     marginBottom: spacing.xs,
+    textAlign: "center",
   },
 
   subtitle: {
     color: colors.textMuted,
     ...typography.body,
     marginBottom: spacing.md,
+    textAlign: "center",
   },
 
   player: {

@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from "react-native";
 import * as WebBrowser from "expo-web-browser";
 
 import logo from "../../assets/img/logo_mg_new.png";
@@ -10,6 +17,8 @@ import ScreenContainer from "../components/ScreenContainer";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
+
+const { width } = Dimensions.get("window");
 
 async function openUrl(url) {
   await WebBrowser.openBrowserAsync(url);
@@ -26,13 +35,14 @@ export default function HomeScreen({ navigation }) {
   );
 
   return (
-    <ScreenContainer>
+    <ScreenContainer edges={["top", "bottom"]}>
       <FlatList
         data={MENU_ITEMS}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
-        ItemSeparatorComponent={() => <View style={{ height: spacing.sm }} />}
+        ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
         ListHeaderComponent={
           <View style={styles.header}>
             <Image source={logo} style={styles.logo} />
@@ -51,34 +61,40 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 40,
+    paddingHorizontal: spacing.lg,
+    paddingTop: spacing.sm,
+    paddingBottom: spacing.xl,
+    flexGrow: 1,
   },
 
   header: {
     alignItems: "center",
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
   },
 
   logo: {
-    width: 180,
-    height: 180,
+    width: width * 0.5,
+    height: width * 0.35,
     resizeMode: "contain",
-    marginBottom: spacing.sm,
+    marginBottom: 4,
   },
 
   sectionTitle: {
     color: colors.text,
     ...typography.title,
+    textAlign: "center",
   },
 
   footer: {
-    marginTop: 60,
+    marginTop: spacing.xl,
     alignItems: "center",
+    paddingBottom: spacing.md,
   },
 
   footerText: {
     color: colors.primary,
     ...typography.small,
     opacity: 0.85,
+    textAlign: "center",
   },
 });

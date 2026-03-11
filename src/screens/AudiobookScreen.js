@@ -42,11 +42,13 @@ const styles = StyleSheet.create({
     color: colors.text,
     ...typography.titleLarge,
     marginBottom: spacing.xs,
+    textAlign: "center",
   },
 
   subtitle: {
     color: colors.textMuted,
     ...typography.body,
     marginBottom: spacing.lg,
+    textAlign: "center",
   },
 });

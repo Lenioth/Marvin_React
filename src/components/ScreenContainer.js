@@ -1,20 +1,26 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../theme/colors";
-import { spacing } from "../theme/spacing";
 
-export default function ScreenContainer({ children, style, edges = ["top"] }) {
+export default function ScreenContainer({
+  children,
+  style,
+  edges = ["top", "bottom"],
+}) {
   return (
-    <SafeAreaView style={[styles.container, style]} edges={edges}>
-      {children}
+    <SafeAreaView style={styles.safe} edges={edges}>
+      <View style={[styles.content, style]}>{children}</View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safe: {
     flex: 1,
     backgroundColor: colors.background,
-    padding: spacing.lg,
+  },
+  content: {
+    flex: 1,
   },
 });

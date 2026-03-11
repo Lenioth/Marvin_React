@@ -15,7 +15,7 @@ export default function PortfolioScreen() {
   return (
     <ScreenContainer>
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 40 }}
+        contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.title}>Livros</Text>
@@ -65,16 +65,22 @@ export default function PortfolioScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: spacing.sm,
+    paddingBottom: spacing.xl,
+  },
+
   title: {
     color: colors.text,
     ...typography.title,
     marginBottom: spacing.md,
+    textAlign: "center",
   },
 
   card: {
     backgroundColor: colors.card,
     borderRadius: 16,
-    padding: 15,
+    padding: spacing.md,
     marginBottom: spacing.lg,
     borderWidth: 1,
     borderColor: colors.primary,
@@ -82,9 +88,9 @@ const styles = StyleSheet.create({
 
   image: {
     width: "100%",
-    height: 180,
+    height: 140,
     borderRadius: 12,
-    marginBottom: 10,
+    marginBottom: spacing.sm,
     resizeMode: "cover",
   },
 
