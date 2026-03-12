@@ -9,8 +9,13 @@ const TRACKS_BY_BOOK = {
     },
     {
       id: "2",
-      title: "Capítulo 1",
+      title: "Vila Branca",
       source: { uri: BASE_URL + "livro1/capitulo-01.mp3" },
+    },
+    {
+      id: "3",
+      title: "Adormecido Parte 1",
+      source: { uri: BASE_URL + "livro1/capitulo-02.mp3" },
     },
   ],
 

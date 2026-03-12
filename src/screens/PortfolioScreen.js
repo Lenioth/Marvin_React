@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: spacing.sm,
     paddingBottom: spacing.xl,
+    
   },
 
   title: {
