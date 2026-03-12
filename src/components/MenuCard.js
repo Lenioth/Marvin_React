@@ -5,12 +5,15 @@ import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
 
 export default function MenuCard({ item, onPress }) {
+
+  const Icon = item.icon;
+
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
     >
-      <Text style={styles.cardEmoji}>{item.emoji}</Text>
+      {Icon && <Icon width={24} height={24} style={styles.cardIcon} accessible={false} />}
       <Text style={styles.cardTitle}>{item.title}</Text>
       <Text style={styles.cardArrow}>›</Text>
     </Pressable>

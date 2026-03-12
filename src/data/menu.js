@@ -1,4 +1,5 @@
 import { ROUTES } from "../navigation/routes";
+import rede from "../../assets/icons/rede.svg";
 
 const MENU_ITEMS = [
   {
@@ -27,7 +28,7 @@ const MENU_ITEMS = [
     title: "Site",
     type: "external",
     url: "https://www.marvingrinnsocial.com.br/",
-    emoji: "🌐",
+    icon: rede,
   },
   {
     id: "5",
