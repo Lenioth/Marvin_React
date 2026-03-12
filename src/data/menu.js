@@ -1,5 +1,11 @@
 import { ROUTES } from "../navigation/routes";
 import rede from "../../assets/icons/rede.svg";
+import wand from "../../assets/icons/magic-wand.svg";
+import book from "../../assets/icons/books.svg";
+import headset from "../../assets/icons/headphone.svg";
+import game from "../../assets/icons/joystick.svg";
+import social from "../../assets/icons/social.svg";
+import project from "../../assets/icons/project.svg";
 
 const MENU_ITEMS = [
   {
@@ -7,21 +13,21 @@ const MENU_ITEMS = [
     title: "Adquirir Livros Marvin Grinn",
     type: "external",
     url: "https://api.whatsapp.com/send/?phone=555591911219&text=Ol%C3%A1%2C+gostaria+de+entrar+em+contato%21&type=phone_number&app_absent=0",
-    emoji: "💬",
+    icon: social,
   },
   {
     id: "2",
     title: "Projeto Social",
     type: "screen",
     screen: ROUTES.PROJETO,
-    emoji: "🤝",
+    icon: project,
   },
   {
     id: "3",
     title: "Saga",
     type: "screen",
     screen: ROUTES.SAGA,
-    emoji: "📚",
+    icon: wand,
   },
   {
     id: "4",
@@ -35,21 +41,21 @@ const MENU_ITEMS = [
     title: "Livros",
     type: "external",
     url: "https://www.marvingrinnsocial.com.br/a-serie/",
-    emoji: "📚",
+    icon: book,
   },
   {
     id: "6",
     title: "Games",
     type: "external",
     url: "https://www.marvingrinnsocial.com.br/jogos",
-    emoji: "🎮",
+    icon: game,
   },
   {
     id: "7",
     title: "Audiolivro",
     type: "screen",
     screen: ROUTES.AUDIOBOOK,
-    emoji: "🎧",
+    icon: headset,
   },
 ];
 
