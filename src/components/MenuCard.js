@@ -5,17 +5,40 @@ import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
 
 export default function MenuCard({ item, onPress }) {
-
   const Icon = item.icon;
+
+  const hint =
+    item.type === "external"
+      ? "Abre conteúdo externo no navegador"
+      : "Abre esta seção do aplicativo";
 
   return (
     <Pressable
       onPress={onPress}
+      accessible
+      accessibilityRole="button"
+      accessibilityLabel={item.title}
+      accessibilityHint={hint}
       style={({ pressed }) => [styles.card, pressed && styles.cardPressed]}
     >
-      {Icon && <Icon width={24} height={24} style={styles.cardIcon} accessible={false} />}
+      {Icon && (
+        <Icon
+          width={22}
+          height={22}
+          style={styles.cardIcon}
+          accessible={false}
+        />
+      )}
+
       <Text style={styles.cardTitle}>{item.title}</Text>
-      <Text style={styles.cardArrow}>›</Text>
+
+      <Text
+        style={styles.cardArrow}
+        accessible={false}
+        importantForAccessibility="no"
+      >
+        ›
+      </Text>
     </Pressable>
   );
 }
@@ -30,6 +53,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     borderWidth: 1,
     borderColor: colors.primary,
+    minHeight: 56,
   },
 
   cardPressed: {
@@ -37,9 +61,8 @@ const styles = StyleSheet.create({
     opacity: 0.9,
   },
 
-  cardEmoji: {
-    fontSize: 20,
-    width: 30,
+  cardIcon: {
+    marginRight: spacing.sm,
   },
 
   cardTitle: {
