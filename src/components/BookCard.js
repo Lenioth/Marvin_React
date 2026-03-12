@@ -6,10 +6,19 @@ import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
 
 export default function BookCard({ item, onPress }) {
+  const accessibilityStatus = item.comingSoon ? ", em breve" : "";
+  const accessibilityHint = item.comingSoon 
+    ? "Este livro ainda não está disponível" 
+    : "Toque para ver os capítulos disponíveis";
+
   return (
     <Pressable
       disabled={item.comingSoon}
       onPress={onPress}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={`${item.title}${accessibilityStatus}`}
+      accessibilityHint={accessibilityHint}
       style={({ pressed }) => [
         styles.wrapper,
         pressed && !item.comingSoon && styles.cardPressed,
@@ -22,21 +31,38 @@ export default function BookCard({ item, onPress }) {
             source={item.cover}
             style={styles.cover}
             blurRadius={item.comingSoon ? 4 : 0}
+            accessible={false}
           />
 
           {item.comingSoon && (
             <View style={styles.soonOverlay}>
-              <Text style={styles.soonText}>Em breve</Text>
+              <Text 
+                style={styles.soonText}
+                accessible={false}
+                importantForAccessibility="no"
+              >
+                Em breve
+              </Text>
             </View>
           )}
         </View>
 
         <View style={styles.cardContent}>
-          <Text style={styles.cardTitle} numberOfLines={2}>
+          <Text 
+            style={styles.cardTitle} 
+            numberOfLines={2}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             {item.title}
           </Text>
 
-          <Text style={styles.cardDescription} numberOfLines={2}>
+          <Text 
+            style={styles.cardDescription} 
+            numberOfLines={2}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             {item.description}
           </Text>
         </View>

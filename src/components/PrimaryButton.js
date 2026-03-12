@@ -10,11 +10,19 @@ export default function PrimaryButton({
   disabled = false,
   style,
   textStyle,
+  accessibilityHint,
 }) {
+  const accessibilityLabel = disabled ? `${title}, desabilitado` : title;
+  
   return (
     <Pressable
       onPress={onPress}
       disabled={disabled}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityHint={accessibilityHint}
+      accessibilityState={{ disabled }}
       style={({ pressed }) => [
         styles.button,
         disabled && styles.disabled,
@@ -22,7 +30,13 @@ export default function PrimaryButton({
         style,
       ]}
     >
-      <Text style={[styles.text, textStyle]}>{title}</Text>
+      <Text 
+        style={[styles.text, textStyle]}
+        accessible={false}
+        importantForAccessibility="no"
+      >
+        {title}
+      </Text>
     </Pressable>
   );
 }

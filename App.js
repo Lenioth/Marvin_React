@@ -13,7 +13,10 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      accessible={true}
+      accessibilityLabel="Navegador do Aplicativo"
+    >
       <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{

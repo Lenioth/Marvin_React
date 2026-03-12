@@ -17,44 +17,130 @@ export default function PortfolioScreen() {
       <ScrollView
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}
+        accessible={true}
+        accessibilityLabel="Lista de livros"
+        accessibilityHint="Deslize para ver todos os livros disponíveis"
       >
-        <Text style={styles.title}>Livros</Text>
+        <Text
+          style={styles.title}
+          accessible={true}
+          accessibilityRole="header"
+          accessibilityLabel="Livros"
+        >
+          Livros
+        </Text>
 
-        <View style={styles.card}>
-          <Image source={projeto1} style={styles.image} />
-          <Text style={styles.cardTitle}>Marvin Grinn e a Chave Mestra.</Text>
-          <Text style={styles.cardDescription}>
+        <View
+          style={styles.card}
+          accessible={true}
+          accessibilityLabel="Marvin Grinn e a Chave Mestra"
+          accessibilityHint="Atividades de incentivo à leitura e criatividade"
+        >
+          <Image
+            source={projeto1}
+            style={styles.image}
+            accessible={false}
+            accessibilityIgnoresInvertColors
+          />
+          <Text
+            style={styles.cardTitle}
+            accessible={false}
+            importantForAccessibility="no"
+          >
+            Marvin Grinn e a Chave Mestra.
+          </Text>
+          <Text
+            style={styles.cardDescription}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Atividades de incentivo à leitura e criatividade através da saga
             Marvin Grinn.
           </Text>
         </View>
 
-        <View style={styles.card}>
-          <Image source={projeto2} style={styles.image} />
-          <Text style={styles.cardTitle}>
+        <View
+          style={styles.card}
+          accessible={true}
+          accessibilityLabel="Marvin Grinn e o Segredo da Sereia"
+          accessibilityHint="Atividades de incentivo à leitura e criatividade"
+        >
+          <Image
+            source={projeto2}
+            style={styles.image}
+            accessible={false}
+            accessibilityIgnoresInvertColors
+          />
+          <Text
+            style={styles.cardTitle}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Marvin Grinn e o Segredo da Sereia.
           </Text>
-          <Text style={styles.cardDescription}>
+          <Text
+            style={styles.cardDescription}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Atividades de incentivo à leitura e criatividade através da saga
             Marvin Grinn.
           </Text>
         </View>
 
-        <View style={styles.card}>
-          <Image source={projeto3} style={styles.image} />
-          <Text style={styles.cardTitle}>Marvin Grinn e a Gaiola Dourada.</Text>
-          <Text style={styles.cardDescription}>
+        <View
+          style={styles.card}
+          accessible={true}
+          accessibilityLabel="Marvin Grinn e a Gaiola Dourada"
+          accessibilityHint="Atividades de incentivo à leitura e criatividade"
+        >
+          <Image
+            source={projeto3}
+            style={styles.image}
+            accessible={false}
+            accessibilityIgnoresInvertColors
+          />
+          <Text
+            style={styles.cardTitle}
+            accessible={false}
+            importantForAccessibility="no"
+          >
+            Marvin Grinn e a Gaiola Dourada.
+          </Text>
+          <Text
+            style={styles.cardDescription}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Atividades de incentivo à leitura e criatividade através da saga
             Marvin Grinn.
           </Text>
         </View>
 
-        <View style={styles.card}>
-          <Image source={projeto4} style={styles.image} />
-          <Text style={styles.cardTitle}>
+        <View
+          style={styles.card}
+          accessible={true}
+          accessibilityLabel="Marvin Grinn e o Sangue do Dragão"
+          accessibilityHint="Participação em eventos culturais e oficinas educativas"
+        >
+          <Image
+            source={projeto4}
+            style={styles.image}
+            accessible={false}
+            accessibilityIgnoresInvertColors
+          />
+          <Text
+            style={styles.cardTitle}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Marvin Grinn e o Sangue do Dragão.
           </Text>
-          <Text style={styles.cardDescription}>
+          <Text
+            style={styles.cardDescription}
+            accessible={false}
+            importantForAccessibility="no"
+          >
             Participação em eventos culturais e oficinas educativas voltadas à
             literatura e criatividade.
           </Text>
@@ -68,7 +154,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: spacing.sm,
     paddingBottom: spacing.xl,
-    
   },
 
   title: {

@@ -2,8 +2,16 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { colors } from "../theme/colors";
 
-export default function Card({ children, style }) {
-  return <View style={[styles.card, style]}>{children}</View>;
+export default function Card({ children, style, accessible = false, accessibilityLabel }) {
+  return (
+    <View 
+      style={[styles.card, style]}
+      accessible={accessible}
+      accessibilityLabel={accessibilityLabel}
+    >
+      {children}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

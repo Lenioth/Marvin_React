@@ -9,13 +9,34 @@ export default function ServicosScreen() {
     <ScrollView
       style={styles.page}
       contentContainerStyle={{ paddingBottom: 40 }}
+      accessible={true}
+      accessibilityLabel="Informações do Projeto"
+      accessibilityHint="Deslize para ler mais informações sobre o projeto"
     >
-      <Text style={styles.title}>O Projeto</Text>
-      <Text style={styles.subtitle}>
+      <Text 
+        style={styles.title}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel="O Projeto"
+      >
+        O Projeto
+      </Text>
+      <Text 
+        style={styles.subtitle}
+        accessible={true}
+        accessibilityLabel="Conheça mais do nosso projeto a seguir"
+      >
         Conheça mais do nosso projeto a seguir.
       </Text>
 
-      <Text style={styles.sectionTitle}>Apresentação</Text>
+      <Text 
+        style={styles.sectionTitle}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel="Seção: Apresentação"
+      >
+        Apresentação
+      </Text>
       <Text style={styles.text}>
         O projeto tem por objetivo ampliar o acesso à literatura, com foco nos
         livros da Série Marvin Grinn, desenvolvendo ferramentas que revertam em
@@ -29,7 +50,14 @@ export default function ServicosScreen() {
         em braile, audiodescrição e materiais audiovisuais.
       </Text>
 
-      <Text style={styles.sectionTitle}>Objetivos Culturais</Text>
+      <Text 
+        style={styles.sectionTitle}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel="Seção: Objetivos Culturais"
+      >
+        Objetivos Culturais
+      </Text>
       <Text style={styles.bullet}>
         • Via website, contendo versão em audiodescrição, totalmente gratuita.
       </Text>

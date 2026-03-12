@@ -5,7 +5,15 @@ import { spacing } from "../theme/spacing";
 import { typography } from "../theme/typography";
 
 export default function SectionTitle({ children, style }) {
-  return <Text style={[styles.title, style]}>{children}</Text>;
+  return (
+    <Text 
+      style={[styles.title, style]}
+      accessible={true}
+      accessibilityRole="header"
+    >
+      {children}
+    </Text>
+  );
 }
 
 const styles = StyleSheet.create({

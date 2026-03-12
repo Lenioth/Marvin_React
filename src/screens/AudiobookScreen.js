@@ -23,8 +23,21 @@ export default function AudiobookScreen({ navigation }) {
 
   return (
     <ScreenContainer>
-      <Text style={styles.title}>Audiolivros gratuitos</Text>
-      <Text style={styles.subtitle}>Escolha um livro para ouvir</Text>
+      <Text 
+        style={styles.title}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel="Audiolivros gratuitos"
+      >
+        Audiolivros gratuitos
+      </Text>
+      <Text 
+        style={styles.subtitle}
+        accessible={true}
+        accessibilityLabel="Escolha um livro para ouvir"
+      >
+        Escolha um livro para ouvir
+      </Text>
 
       <FlatList
         data={BOOKS}
@@ -32,6 +45,9 @@ export default function AudiobookScreen({ navigation }) {
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: spacing.xl }}
         ItemSeparatorComponent={() => <View style={{ height: spacing.md }} />}
+        accessible={true}
+        accessibilityLabel="Lista de audiolivros"
+        accessibilityHint="Deslize para ver mais livros"
       />
     </ScreenContainer>
   );

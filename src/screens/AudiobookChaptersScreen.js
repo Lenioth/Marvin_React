@@ -46,8 +46,21 @@ export default function AudiobookChaptersScreen({ route }) {
 
   return (
     <ScreenContainer>
-      <Text style={styles.title}>{bookTitle}</Text>
-      <Text style={styles.subtitle}>Capítulos disponíveis</Text>
+      <Text
+        style={styles.title}
+        accessible={true}
+        accessibilityRole="header"
+        accessibilityLabel={bookTitle}
+      >
+        {bookTitle}
+      </Text>
+      <Text
+        style={styles.subtitle}
+        accessible={true}
+        accessibilityLabel="Capítulos disponíveis"
+      >
+        Capítulos disponíveis
+      </Text>
 
       <FlatList
         data={tracks}
@@ -58,26 +71,98 @@ export default function AudiobookChaptersScreen({ route }) {
           paddingHorizontal: spacing.md,
           paddingBottom: spacing.lg,
         }}
+        accessible={true}
+        accessibilityLabel="Lista de capítulos"
+        accessibilityHint="Deslize para ver todos os capítulos"
       />
 
-      <View style={styles.player}>
-        <Text style={styles.now}>
+      <View
+        style={styles.player}
+        accessible={true}
+        accessibilityLabel="Controle de reprodução de áudio"
+      >
+        <Text
+          style={styles.now}
+          accessible={true}
+          accessibilityLabel={
+            current
+              ? `Agora tocando: ${current.title}`
+              : "Nenhum capítulo selecionado. Selecione um capítulo para ouvir"
+          }
+        >
           {current
             ? `Agora: ${current.title}`
             : "Selecione um capítulo para ouvir"}
         </Text>
 
-        <View style={styles.controls}>
-          <Pressable style={styles.btn} onPress={resume} disabled={!current}>
-            <Text style={styles.btnText}>▶️</Text>
+        <View style={styles.controls} accessible={false}>
+          <Pressable
+            style={styles.btn}
+            onPress={resume}
+            disabled={!current}
+            accessible={true}
+            accessibilityRole="button"
+            accessibilityLabel="Reproduzir"
+            accessibilityHint={
+              current
+                ? "Retoma a reprodução do capítulo atual"
+                : "Desabilitado - nenhum capítulo selecionado"
+            }
+            accessibilityState={{ disabled: !current }}
+          >
+            <Text
+              style={styles.btnText}
+              accessible={false}
+              importantForAccessibility="no"
+            >
+              ▶️
+            </Text>
           </Pressable>
 
-          <Pressable style={styles.btn} onPress={pause} disabled={!current}>
-            <Text style={styles.btnText}>⏸️</Text>
+          <Pressable
+            style={styles.btn}
+            onPress={pause}
+            disabled={!current}
+            accessible={true}
+            accessibilityRole="button"
+            accessibilityLabel="Pausar"
+            accessibilityHint={
+              current
+                ? "Pausa a reprodução do capítulo atual"
+                : "Desabilitado - nenhum capítulo selecionado"
+            }
+            accessibilityState={{ disabled: !current }}
+          >
+            <Text
+              style={styles.btnText}
+              accessible={false}
+              importantForAccessibility="no"
+            >
+              ⏸️
+            </Text>
           </Pressable>
 
-          <Pressable style={styles.btn} onPress={stop} disabled={!current}>
-            <Text style={styles.btnText}>⏹️</Text>
+          <Pressable
+            style={styles.btn}
+            onPress={stop}
+            disabled={!current}
+            accessible={true}
+            accessibilityRole="button"
+            accessibilityLabel="Parar"
+            accessibilityHint={
+              current
+                ? "Para a reprodução e volta ao início"
+                : "Desabilitado - nenhum capítulo selecionado"
+            }
+            accessibilityState={{ disabled: !current }}
+          >
+            <Text
+              style={styles.btnText}
+              accessible={false}
+              importantForAccessibility="no"
+            >
+              ⏹️
+            </Text>
           </Pressable>
         </View>
       </View>

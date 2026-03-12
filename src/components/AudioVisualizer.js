@@ -45,9 +45,17 @@ export default function AudioVisualizer({ isPlaying }) {
   }, [isPlaying]);
 
   return (
-    <View style={styles.container}>
+    <View 
+      style={styles.container}
+      accessible={false}
+      importantForAccessibility="no"
+    >
       {bars.map((bar, index) => (
-        <Animated.View key={index} style={[styles.bar, { height: bar }]} />
+        <Animated.View 
+          key={index} 
+          style={[styles.bar, { height: bar }]} 
+          accessible={false}
+        />
       ))}
     </View>
   );

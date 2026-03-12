@@ -13,15 +13,38 @@ export default function ChapterCard({
   progressText,
   onPress,
 }) {
+  const status = selected ? (isPlaying ? "tocando agora" : "selecionado") : "";
+  const accessibilityHint = selected
+    ? isPlaying
+      ? "Está tocando agora. Toque para pausar."
+      : "Capítulo selecionado. Toque para começar a tocar."
+    : progressText
+    ? `Toque para continuar. ${progressText}`
+    : "Toque para ouvir este capítulo";
+
   return (
     <Pressable
       onPress={onPress}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={`${item.title}${status ? ", " + status : ""}`}
+      accessibilityHint={accessibilityHint}
       style={({ pressed }) => [pressed && { opacity: 0.9 }]}
     >
       <Card style={[styles.track, selected && styles.trackSelected]}>
-        <Text style={styles.trackTitle}>{item.title}</Text>
+        <Text 
+          style={styles.trackTitle}
+          accessible={false}
+          importantForAccessibility="no"
+        >
+          {item.title}
+        </Text>
 
-        <View style={styles.trackFooter}>
+        <View 
+          style={styles.trackFooter}
+          accessible={false}
+          importantForAccessibility="no"
+        >
           <Text style={styles.trackHint}>
             {selected
               ? isPlaying

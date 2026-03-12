@@ -43,15 +43,35 @@ export default function HomeScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
         ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
+        accessible={true}
+        accessibilityLabel="Menu de navegação"
+        accessibilityHint="Deslize para ver todas as opções disponíveis"
         ListHeaderComponent={
           <View style={styles.header}>
-            <Image source={logo} style={styles.logo} />
-            <Text style={styles.sectionTitle}>Acessos</Text>
+            <Image 
+              source={logo} 
+              style={styles.logo} 
+              accessible={true}
+              accessibilityLabel="Logo Marvin Grinn Social"
+            />
+            <Text 
+              style={styles.sectionTitle}
+              accessible={true}
+              accessibilityRole="header"
+            >
+              Acessos
+            </Text>
           </View>
         }
         ListFooterComponent={
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Desenvolvido por Pubblicità</Text>
+            <Text 
+              style={styles.footerText}
+              accessible={true}
+              accessibilityLabel="Desenvolvido por Pubblicità"
+            >
+              Desenvolvido por Pubblicità
+            </Text>
           </View>
         }
       />

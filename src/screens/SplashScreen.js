@@ -32,20 +32,36 @@ export default function SplashScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View 
+      style={styles.container}
+      accessible={true}
+      accessibilityLabel="Tela de Splash"
+      accessibilityHint="Tela inicial do aplicativo"
+    >
       {/* BACKGROUND */}
-      <Image source={fundo} style={styles.background} />
+      <Image 
+        source={fundo} 
+        style={styles.background}
+        accessible={false}
+        accessibilityIgnoresInvertColors
+      />
 
       {/* MARVIN */}
       <Animated.Image
         source={marvin}
         style={[styles.marvin, { opacity: marvinOpacity }]}
+        accessible={true}
+        accessibilityLabel="Logo Marvin Grinn"
+        accessibilityIgnoresInvertColors
       />
 
       {/* PATROCINADORES */}
       <Animated.Image
         source={patrocinio}
         style={[styles.footer, { opacity: patrocinioOpacity }]}
+        accessible={true}
+        accessibilityLabel="Empresas Patrocinadoras"
+        accessibilityIgnoresInvertColors
       />
     </View>
   );
