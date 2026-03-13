@@ -11,19 +11,26 @@
       "resizeMode": "contain",
       "backgroundColor": "#0f2e2a"
     },
+
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.pubblicitagames.marvingrinnsocial",
+      "supportsTablet": true,
+      "buildNumber": "1.0.0",
+      "icon": "./assets/icone.png"
     },
+
     "android": {
-      "package": "com.anonymous.marvingrinn",
+      "package": "com.pubblicitagames.marvingrinnsocial",
       "adaptiveIcon": {
         "backgroundColor": "#0f2e2a",
         "foregroundImage": "./assets/icone.png"
       }
     },
+
     "web": {
       "favicon": "./assets/favicon.png"
     },
+
     "plugins": [
       "expo-web-browser",
       "expo-audio"
